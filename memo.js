@@ -1,61 +1,51 @@
 let cardArray = [
   {
-    name: "Apple",
-    image:
-      "https://i.pinimg.com/564x/db/dd/79/dbdd79e524679fceed9024c486147e36.jpg",
+    name: "Coffee",
+    image: "/pics/coffee.png",
   },
   {
-    name: "Apple",
-    image:
-      "https://i.pinimg.com/564x/db/dd/79/dbdd79e524679fceed9024c486147e36.jpg",
+    name: "Coffee",
+    image: "/pics/coffee.png",
   },
   {
-    name: "Fries",
-    image:
-      "https://www.pinclipart.com/picdir/middle/12-126220_french-fries-fast-food-cartoon-junk-food-potato.png",
+    name: "Rice",
+    image: "pics/rice.png",
   },
   {
-    name: "Fries",
-    image:
-      "https://www.pinclipart.com/picdir/middle/12-126220_french-fries-fast-food-cartoon-junk-food-potato.png",
+    name: "Rice",
+    image: "pics/rice.png",
   },
   {
     name: "Cookie",
-    image:
-      "https://github.com/Oren-Arg/Memo-Game/blob/main/baker-bakery-cookie-dessert-food-icon-605262.png",
+    image: "pics/cookie.png",
   },
   {
     name: "Cookie",
-    image:
-      "https://github.com/Oren-Arg/Memo-Game/blob/main/baker-bakery-cookie-dessert-food-icon-605262.png",
+    image: "pics/cookie.png",
   },
   {
-    name: "Doughnut",
-    image:
-      "https://banner2.cleanpng.com/20171216/1f2/donut-png-5a35ec804b2b36.4838824115134833923079.jpg",
+    name: "Pot",
+    image: "pics/pot.png",
   },
   {
-    name: "Doughnut",
-    image:
-      "https://banner2.cleanpng.com/20171216/1f2/donut-png-5a35ec804b2b36.4838824115134833923079.jpg",
+    name: "Pot",
+    image: "pics/pot.png",
   },
   {
-    name: "hotdog",
-    img: "https://w7.pngwing.com/pngs/516/668/png-transparent-hot-dog-sausage-fast-food-cartoon-cartoon-hot-dog-cartoon-character-barbecue-food-thumbnail.png",
+    name: "Tomato",
+    img: "pics/tomato.png",
   },
   {
-    name: "hotdog",
-    img: "https://w7.pngwing.com/pngs/516/668/png-transparent-hot-dog-sausage-fast-food-cartoon-cartoon-hot-dog-cartoon-character-barbecue-food-thumbnail.png",
+    name: "Tomato",
+    img: "pics/tomato.png",
   },
   {
     name: "Hamburger",
-    image:
-      "https://png.pngtree.com/png-clipart/20190516/original/pngtree-cute-minimalist-creative-cartoon-hamburger-png-image_4057859.jpg",
+    image: "pics/hamburger.png",
   },
   {
     name: "Hamburger",
-    image:
-      "https://png.pngtree.com/png-clipart/20190516/original/pngtree-cute-minimalist-creative-cartoon-hamburger-png-image_4057859.jpg",
+    image: "pics/hamburger.png",
   },
 ];
 
@@ -83,10 +73,7 @@ function createBoard(grid, array) {
   popup.style.display = "none";
   array.forEach((arr, index) => {
     let img = document.createElement("img");
-    img.setAttribute(
-      "src",
-      "https://png.pngtree.com/png-clipart/20200225/original/pngtree-hand-drawn-fast-food-doodle-vector-set-of-fast-food-vector-png-image_5280161.jpg"
-    );
+    img.setAttribute("src", "pics/back.png");
     img.setAttribute("data-id", index);
     grid.appendChild(img);
   });
@@ -114,20 +101,12 @@ function checkForMatch() {
   let firstCard = cardsId[0];
   let secondCard = cardsId[1];
   if (cardsSelected[0] === cardsSelected[1] && firstCard !== secondCard) {
-    alert("you have found a match");
     cardsWon += 1;
     scoreBoard.innerHTML = cardsWon;
     setTimeout(checkWon, 500);
   } else {
-    imgs[firstCard].setAttribute(
-      "src",
-      "https://png.pngtree.com/png-clipart/20200225/original/pngtree-hand-drawn-fast-food-doodle-vector-set-of-fast-food-vector-png-image_5280161.jpg"
-    );
-    imgs[secondCard].setAttribute(
-      "src",
-      "https://png.pngtree.com/png-clipart/20200225/original/pngtree-hand-drawn-fast-food-doodle-vector-set-of-fast-food-vector-png-image_5280161.jpg"
-    );
-    alert("wrong, please try again");
+    imgs[firstCard].setAttribute("src", "pics/back.png");
+    imgs[secondCard].setAttribute("src", "pics/back.png");
 
     imgs[firstCard].classList.remove("flip");
     imgs[secondCard].classList.remove("flip");
