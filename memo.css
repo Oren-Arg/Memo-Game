@@ -1,0 +1,54 @@
+
+.grid {
+     
+    width: 90%; 
+    height: 100px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    margin: 60px auto; 
+    } 
+    
+    .grid img { 
+    box-shadow: 5px -10px 5px teal;;
+    width: 200px; 
+    height: 300px; 
+    margin: 2px; 
+    border:2px solid black;
+    transform-style: preserve-3d; 
+    transition: transform 0.5s; 
+    } 
+    
+    .grid img.flip { 
+    transform: rotateY(180deg); 
+    } 
+    
+    .popup { 
+    background: red; 
+    width: 100px; 
+    height: 100px; 
+    position: fixed;
+    z-index:20;
+    top: 100px;
+    left: 100px; display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+    }
+    
+    .data { 
+       
+    display: flex; 
+    justify-content: space-between; 
+    padding: 20px 30px; 
+    font-size: 23px; 
+    } 
+    
+    .data span { 
+    color: rgb(206, 121, 11);
+    font-size: 30px; 
+    }
+
+    
+    body{
+        background-image: url("https://thumbs.dreamstime.com/z/seamless-texture-fast-food-striped-background-seamless-texture-fast-food-striped-background-handdrawn-sketch-111730897.jpg");
+    }
