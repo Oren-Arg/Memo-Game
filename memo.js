@@ -1,51 +1,51 @@
 let cardArray = [
   {
-    name: "Coffee",
-    image: "/pics/coffee.png",
+    name: "Western Wall",
+    img: "./pics/westernwall.jpg",
   },
   {
-    name: "Coffee",
-    image: "/pics/coffee.png",
+    name: "Western Wall",
+    img: "./pics/westernwall.jpg",
   },
   {
-    name: "Rice",
-    image: "pics/rice.png",
+    name: "TajMahal",
+    img: "./pics/tajmahal.jpg",
   },
   {
-    name: "Rice",
-    image: "pics/rice.png",
+    name: "TajMahal",
+    img: "./pics/tajmahal.jpg",
   },
   {
-    name: "Cookie",
-    image: "pics/cookie.png",
+    name: "Bahai",
+    img: "./pics/bahai.jpg",
   },
   {
-    name: "Cookie",
-    image: "pics/cookie.png",
+    name: "Bahai",
+    img: "./pics/bahai.jpg",
   },
   {
-    name: "Pot",
-    image: "pics/pot.png",
+    name: "GoldenBridge",
+    img: "./pics/goldenbridge.jpg",
   },
   {
-    name: "Pot",
-    image: "pics/pot.png",
+    name: "GoldenBridge",
+    img: "./pics/goldenbridge.jpg",
   },
   {
-    name: "Tomato",
-    img: "pics/tomato.png",
+    name: "GrandCanyon",
+    img: "./pics/grandcanyon.jpg",
   },
   {
-    name: "Tomato",
-    img: "pics/tomato.png",
+    name: "GrandCanyon",
+    img: "./pics/grandcanyon.jpg",
   },
   {
-    name: "Hamburger",
-    image: "pics/hamburger.png",
+    name: "Georgia",
+    img: "pics/georgia.jpg",
   },
   {
-    name: "Hamburger",
-    image: "pics/hamburger.png",
+    name: "Georgia",
+    img: "pics/georgia.jpg",
   },
 ];
 
@@ -90,6 +90,7 @@ function flipCard() {
 
   cardsId.push(selected);
   this.classList.add("flip");
+
   this.setAttribute("src", cardArray[selected].img);
   if (cardsId.length === 2) {
     setTimeout(checkForMatch, 500);

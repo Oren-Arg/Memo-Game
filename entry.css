@@ -1,0 +1,44 @@
+h1{
+    font-size: 100px;
+    color: #fcbf49;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.text{
+    font-size: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #eae2b7;
+    display: flex;
+    justify-content: center;
+}
+.button{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+button{
+    font-family: 'Ubuntu', sans-serif;
+    background:none;
+    color:#fb8500; 
+    border: 2px solid;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    transition: transform 0.3s, border-radius 0.3s;
+}
+
+button:hover{
+    border-color: #cdfb00;
+    color:white;
+    box-shadow:0 0.5em 0.5em -0.4em #cdfb00;
+    cursor: pointer;
+    border-radius: 20%;
+    transform: translateY(-2px) scale(1.1);
+}
+
+body{
+    background-color: #023047;
+}
