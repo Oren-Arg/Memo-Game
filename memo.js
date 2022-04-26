@@ -47,6 +47,14 @@ let cardArray = [
     name: "Georgia",
     img: "pics/georgia.jpg",
   },
+  /* {
+    name: "Deadsea",
+    img: "pics/deadsea.jpg",
+  },
+  {
+    name: "Deadsea",
+    img: "pics/deadsea.jpg",
+  },*/
 ];
 
 let grid = document.querySelector(".grid");
@@ -134,4 +142,5 @@ function replay() {
   clickBoard.innerHTML = 0;
   scoreBoard.innerHTML = 0;
   popup.style.display = "none";
+  location.reload();
 }

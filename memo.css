@@ -4,6 +4,7 @@
     width: 90%; 
     height: 100px; 
     display: flex; 
+    justify-content: space-around;
     flex-wrap: wrap; 
     margin: 60px auto; 
     } 
@@ -13,7 +14,7 @@
     width: 200px; 
     height: 300px; 
     margin: 10px; 
-    transform-style: preserve-3d; 
+    
     transition: transform 0.5s,border-radius 0.2s, box-shadow 0.2s; 
     
     } 
