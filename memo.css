@@ -48,8 +48,13 @@
         position: absolute;
         left:42%;
         top: 40%;
+        transition: border-radius 0.3s;
     }
     
+.congrats:hover{
+    border-radius: 20%;
+}
+
     button{
         font-family: 'Ubuntu', sans-serif;
         background:none;
@@ -70,7 +75,8 @@
     }
 
     .data { 
-       
+       position: sticky;
+       top: 1px;
     display: flex; 
     justify-content: space-between; 
     padding: 20px 30px; 
@@ -94,7 +100,7 @@
         margin: auto;
         width: 40%;
         height: 160px;
-        border: 5px solid rgb(206, 121, 11);
+        border: 5px solid rgb(255, 255, 255);
         border-radius: 10px;
         padding: 10px;  
         display: flex; 
