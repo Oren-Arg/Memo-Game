@@ -1,5 +1,5 @@
 
-.grid {
+.board {
      
     width: 90%; 
     height: 100px; 
@@ -9,7 +9,7 @@
     margin: 60px auto; 
     } 
     
-    .grid img { 
+    .board img { 
    
     width: 200px; 
     height: 300px; 
@@ -19,7 +19,7 @@
     
     } 
 
-    .grid img:hover{
+    .board img:hover{
      transform: scale(1.1);
      border-radius: 7%;
      box-shadow:0px 0px 10px 5px rgb(225, 255, 0) ;
@@ -27,7 +27,7 @@
     }
     
     
-    .grid img.flip { 
+    .board img.flip { 
     transform: translatey(-20px) rotateY(180deg); 
     border-radius: 10%;
     } 

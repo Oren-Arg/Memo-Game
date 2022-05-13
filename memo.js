@@ -1,4 +1,4 @@
-let cardArray = [
+const cardArray = [
   {
     name: "Western Wall",
     img: "./pics/westernwall.jpg",
@@ -57,7 +57,8 @@ let cardArray = [
     },*/
 ];
 
-let grid = document.querySelector(".grid");
+let playCards = cardArray;
+let board = document.querySelector(".board");
 let scoreBoard = document.querySelector(".scoreBoard");
 let popup = document.querySelector(".popup");
 let playAgain = document.querySelector(".playAgain");
@@ -68,7 +69,7 @@ let cardsSelected = [];
 let cardsWon = 0;
 let clicks = 0;
 document.addEventListener("DOMContentLoaded", function () {
-  createBoard(grid, cardArray);
+  createBoard(board, playCards);
   arrangeCard();
   playAgain.addEventListener("click", replay);
 
@@ -76,32 +77,36 @@ document.addEventListener("DOMContentLoaded", function () {
   Array.from(imgs).forEach((img) => img.addEventListener("click", flipCard));
 });
 
-function createBoard(grid, array) {
+function createBoard(board, array) {
   popup.style.display = "none";
   array.forEach((arr, index) => {
     let img = document.createElement("img");
     img.setAttribute("src", "pics/back.png");
     img.setAttribute("data-id", index);
-    grid.appendChild(img);
+    board.appendChild(img);
   });
 }
 
 function arrangeCard() {
-  cardArray.sort(() => 0.5 - Math.random());
+  playCards.sort(() => 0.5 - Math.random());
 }
 
 function flipCard() {
   let selected = this.dataset.id;
-  let clicked = cardArray[selected].name;
+  let clicked = playCards[selected].name;
   cardsSelected.push(clicked);
 
   cardsId.push(selected);
   this.classList.add("flip");
 
-  this.setAttribute("src", cardArray[selected].img);
+  this.setAttribute("src", playCards[selected].img);
   if (cardsId.length === 2) {
     setTimeout(checkForMatch, 500);
   }
+}
+
+function removeCards(arr, cardToRemove) {
+  return arr.filter((el) => el.name != cardToRemove);
 }
 
 function checkForMatch() {
@@ -111,6 +116,11 @@ function checkForMatch() {
   if (cardsSelected[0] === cardsSelected[1] && firstCard !== secondCard) {
     cardsWon += 1;
     scoreBoard.innerHTML = cardsWon;
+    playCards = removeCards(playCards, cardsSelected[0]);
+    board.innerHTML = "";
+    createBoard(board, playCards);
+    imgs = document.querySelectorAll("img");
+    Array.from(imgs).forEach((img) => img.addEventListener("click", flipCard));g
     setTimeout(checkWon, 500);
   } else {
     imgs[firstCard].setAttribute("src", "pics/back.png");
@@ -134,8 +144,8 @@ function checkWon() {
 
 function replay() {
   arrangeCard();
-  grid.innerHTML = "";
-  createBoard(grid, cardArray);
+  board.innerHTML = "";
+  createBoard(board, playCards);
   cardsWon = 0;
   clicks = 0;
   clickBoard.innerHTML = 0;
