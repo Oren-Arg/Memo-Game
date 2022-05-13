@@ -29,7 +29,7 @@
     
     .grid img.flip { 
     transform: translatey(-20px) rotateY(180deg); 
-    border-radius: 30%;
+    border-radius: 10%;
     } 
     
     .popup { 
@@ -60,7 +60,7 @@
 
     
     body{
-        background-color: #fefae0;
-        background-image: url("pics/background.gif");
+        background-color: #023047;
+        
         background-size: cover;
     }

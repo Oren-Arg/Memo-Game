@@ -48,17 +48,16 @@ let cardArray = [
     img: "pics/georgia.jpg",
   },
   /* {
-    name: "Deadsea",
-    img: "pics/deadsea.jpg",
-  },
-  {
-    name: "Deadsea",
-    img: "pics/deadsea.jpg",
-  },*/
+      name: "Deadsea",
+      img: "pics/deadsea.jpg",
+    },
+    {
+      name: "Deadsea",
+      img: "pics/deadsea.jpg",
+    },*/
 ];
 
 let grid = document.querySelector(".grid");
-let source = document.querySelector("#source");
 let scoreBoard = document.querySelector(".scoreBoard");
 let popup = document.querySelector(".popup");
 let playAgain = document.querySelector(".playAgain");
