@@ -23,57 +23,64 @@ const cardArray = [
     name: "Bahai",
     img: "./pics/bahai.jpg",
   },
-  {
-    name: "GoldenBridge",
-    img: "./pics/goldenbridge.jpg",
-  },
-  {
-    name: "GoldenBridge",
-    img: "./pics/goldenbridge.jpg",
-  },
-  {
-    name: "GrandCanyon",
-    img: "./pics/grandcanyon.jpg",
-  },
-  {
-    name: "GrandCanyon",
-    img: "./pics/grandcanyon.jpg",
-  },
-  {
-    name: "Georgia",
-    img: "pics/georgia.jpg",
-  },
-  {
-    name: "Georgia",
-    img: "pics/georgia.jpg",
-  },
-  {
-    name: "Deadsea",
-    img: "pics/deadsea.jpg",
-  },
-  {
-    name: "Deadsea",
-    img: "pics/deadsea.jpg",
-  },
+  // {
+  //   name: "GoldenBridge",
+  //   img: "./pics/goldenbridge.jpg",
+  // },
+  // {
+  //   name: "GoldenBridge",
+  //   img: "./pics/goldenbridge.jpg",
+  // },
+  // {
+  //   name: "GrandCanyon",
+  //   img: "./pics/grandcanyon.jpg",
+  // },
+  // {
+  //   name: "GrandCanyon",
+  //   img: "./pics/grandcanyon.jpg",
+  // },
+  // {
+  //   name: "Georgia",
+  //   img: "pics/georgia.jpg",
+  // },
+  // {
+  //   name: "Georgia",
+  //   img: "pics/georgia.jpg",
+  // },
+  // {
+  //   name: "Deadsea",
+  //   img: "pics/deadsea.jpg",
+  // },
+  // {
+  //   name: "Deadsea",
+  //   img: "pics/deadsea.jpg",
+  // },
 ];
 
 let playCards = cardArray;
 let matches = document.querySelector(".matches");
 let congrats = document.querySelector(".congrats");
 let board = document.querySelector(".board");
-let scoreBoard = document.querySelector(".scoreBoard");
 let playAgain = document.querySelector(".playAgain");
-let clickBoard = document.querySelector(".clickBoard");
 let imgs;
 let cardsId = [];
 let cardsSelected = [];
-let cardsWon = 0;
-let clicks = 0;
+let cardsWon = { count: 0, p1: 0, p2: 0 };
+let clicks = { count: 0, p1: 0, p2: 0 };
+let names = getUrlData();
+let p1 = names.name1.charAt(0).toUpperCase() + names.name1.slice(1);
+let p2 = names.name2.charAt(0).toUpperCase() + names.name2.slice(1);
+let score1 = document.querySelector(".scoreBoard1");
+let score2 = document.querySelector(".scoreBoard2");
+
 document.addEventListener("DOMContentLoaded", function () {
   congrats.style.display = "none";
   createBoard(board, playCards);
   arrangeCard();
   playAgain.addEventListener("click", replay);
+  document.getElementById("p1").innerText = p1;
+  document.getElementById("p2").innerText = p2;
+  document.querySelector(".p2").setAttribute("id", "");
 
   imgs = document.querySelectorAll("img");
   Array.from(imgs).forEach((img) => img.addEventListener("click", flipCard));
@@ -129,8 +136,15 @@ function checkForMatch() {
   let firstCard = cardsId[0];
   let secondCard = cardsId[1];
   if (cardsSelected[0] === cardsSelected[1] && firstCard !== secondCard) {
-    cardsWon += 1;
-    scoreBoard.innerHTML = cardsWon;
+    if (clicks.count % 2 == 0) {
+      cardsWon.count += 1;
+      cardsWon.p1 += 1;
+      score1.innerHTML = cardsWon.p1;
+    } else {
+      cardsWon.count += 1;
+      cardsWon.p2 += 1;
+      score2.innerHTML = cardsWon.p2;
+    }
     playCards = removeCards(playCards, cardsSelected[0]);
     board.innerHTML = "";
     createBoard(board, playCards);
@@ -147,12 +161,15 @@ function checkForMatch() {
   }
   cardsSelected = [];
   cardsId = [];
-  clicks += 1;
-  clickBoard.innerHTML = clicks;
+  clicks.count += 1;
+
+  setTimeout(alterPlayers(clicks.count), 500);
 }
 
 function checkWon() {
-  if (cardsWon == cardArray.length / 2) {
+  if (cardsWon.count == cardArray.length / 2) {
+    let winner = cardsWon.p1 > cardsWon.p2 ? p1 : p2;
+    document.getElementById("winner").innerHTML = `${winner} has won the game!`;
     congrats.style.display = "flex";
   }
 }
@@ -161,10 +178,39 @@ function replay() {
   arrangeCard();
   board.innerHTML = "";
   createBoard(board, playCards);
-  cardsWon = 0;
-  clicks = 0;
-  clickBoard.innerHTML = 0;
-  scoreBoard.innerHTML = 0;
+  cardsWon.p1 = 0;
+  cardsWon.p2 = 0;
+  cardsWon.count = 0;
+  clicks.count = 0;
+  clicks.p1 = 0;
+  clicks.p2 = 0;
   congrats.style.display = "none";
   location.reload();
+}
+
+function getUrlData() {
+  let playersNames = [],
+    hash;
+  let hashes = window.location.href
+    .slice(window.location.href.indexOf("?") + 1)
+    .split("&");
+  for (let i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split("=");
+    playersNames[hash[0]] = hash[1];
+  }
+  return playersNames;
+}
+
+function alterPlayers(count) {
+  if (count % 2 == 0) {
+    clicks.p1 += 1;
+    document.querySelector(".p1").setAttribute("id", "p1");
+    document.querySelector(".clickBoard2").innerHTML = clicks.p1;
+    document.querySelector(".p2").setAttribute("id", "");
+  } else {
+    clicks.p2 += 1;
+    document.querySelector(".p2").setAttribute("id", "p2");
+    document.querySelector(".clickBoard1").innerHTML = clicks.p2;
+    document.querySelector(".p1").setAttribute("id", "");
+  }
 }
