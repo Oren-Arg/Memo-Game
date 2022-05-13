@@ -58,6 +58,7 @@ const cardArray = [
 ];
 
 let playCards = cardArray;
+let matches = document.querySelector(".matches");
 let board = document.querySelector(".board");
 let scoreBoard = document.querySelector(".scoreBoard");
 let popup = document.querySelector(".popup");
@@ -81,10 +82,19 @@ function createBoard(board, array) {
   popup.style.display = "none";
   array.forEach((arr, index) => {
     let img = document.createElement("img");
+    img.setAttribute("class", "board-card");
     img.setAttribute("src", "pics/back.png");
     img.setAttribute("data-id", index);
     board.appendChild(img);
   });
+}
+
+function matchedBoard(card) {
+  let matchCard = document.createElement("img");
+  matchCard.setAttribute("class", "matchedboard-card");
+  matchCard.setAttribute("src", card.img);
+  matchCard.setAttribute("name", card.name);
+  matches.appendChild(matchCard);
 }
 
 function arrangeCard() {
@@ -95,7 +105,6 @@ function flipCard() {
   let selected = this.dataset.id;
   let clicked = playCards[selected].name;
   cardsSelected.push(clicked);
-
   cardsId.push(selected);
   this.classList.add("flip");
 
@@ -106,11 +115,17 @@ function flipCard() {
 }
 
 function removeCards(arr, cardToRemove) {
+  for (card of arr) {
+    if (card.name == cardToRemove) {
+      matchedBoard(card);
+      break;
+    }
+  }
   return arr.filter((el) => el.name != cardToRemove);
 }
 
 function checkForMatch() {
-  let imgs = document.querySelectorAll("img");
+  let imgs = document.querySelectorAll("img.board-card");
   let firstCard = cardsId[0];
   let secondCard = cardsId[1];
   if (cardsSelected[0] === cardsSelected[1] && firstCard !== secondCard) {
@@ -120,7 +135,8 @@ function checkForMatch() {
     board.innerHTML = "";
     createBoard(board, playCards);
     imgs = document.querySelectorAll("img");
-    Array.from(imgs).forEach((img) => img.addEventListener("click", flipCard));g
+    Array.from(imgs).forEach((img) => img.addEventListener("click", flipCard));
+
     setTimeout(checkWon, 500);
   } else {
     imgs[firstCard].setAttribute("src", "pics/back.png");

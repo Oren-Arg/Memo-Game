@@ -64,3 +64,8 @@
         
         background-size: cover;
     }
+
+    .matches img{
+        width: 100px;
+        height: 150px;
+    }
