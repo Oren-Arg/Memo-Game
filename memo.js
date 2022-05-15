@@ -23,38 +23,38 @@ const cardArray = [
     name: "Bahai",
     img: "./pics/bahai.jpg",
   },
-  // {
-  //   name: "GoldenBridge",
-  //   img: "./pics/goldenbridge.jpg",
-  // },
-  // {
-  //   name: "GoldenBridge",
-  //   img: "./pics/goldenbridge.jpg",
-  // },
-  // {
-  //   name: "GrandCanyon",
-  //   img: "./pics/grandcanyon.jpg",
-  // },
-  // {
-  //   name: "GrandCanyon",
-  //   img: "./pics/grandcanyon.jpg",
-  // },
-  // {
-  //   name: "Georgia",
-  //   img: "pics/georgia.jpg",
-  // },
-  // {
-  //   name: "Georgia",
-  //   img: "pics/georgia.jpg",
-  // },
-  // {
-  //   name: "Deadsea",
-  //   img: "pics/deadsea.jpg",
-  // },
-  // {
-  //   name: "Deadsea",
-  //   img: "pics/deadsea.jpg",
-  // },
+  {
+    name: "GoldenBridge",
+    img: "./pics/goldenbridge.jpg",
+  },
+  {
+    name: "GoldenBridge",
+    img: "./pics/goldenbridge.jpg",
+  },
+  {
+    name: "GrandCanyon",
+    img: "./pics/grandcanyon.jpg",
+  },
+  {
+    name: "GrandCanyon",
+    img: "./pics/grandcanyon.jpg",
+  },
+  {
+    name: "Georgia",
+    img: "pics/georgia.jpg",
+  },
+  {
+    name: "Georgia",
+    img: "pics/georgia.jpg",
+  },
+  {
+    name: "Deadsea",
+    img: "pics/deadsea.jpg",
+  },
+  {
+    name: "Deadsea",
+    img: "pics/deadsea.jpg",
+  },
 ];
 
 let playCards = cardArray;
