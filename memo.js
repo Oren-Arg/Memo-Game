@@ -72,7 +72,7 @@ let p1 = names.name1.charAt(0).toUpperCase() + names.name1.slice(1);
 let p2 = names.name2.charAt(0).toUpperCase() + names.name2.slice(1);
 let score1 = document.querySelector(".scoreBoard1");
 let score2 = document.querySelector(".scoreBoard2");
-
+let isPlayerOne = true;
 document.addEventListener("DOMContentLoaded", function () {
   congrats.style.display = "none";
   createBoard(board, playCards);
@@ -136,7 +136,7 @@ function checkForMatch() {
   let firstCard = cardsId[0];
   let secondCard = cardsId[1];
   if (cardsSelected[0] === cardsSelected[1] && firstCard !== secondCard) {
-    if (clicks.count % 2 == 0) {
+    if (isPlayerOne) {
       cardsWon.count += 1;
       cardsWon.p1 += 1;
       score1.innerHTML = cardsWon.p1;
@@ -153,6 +153,7 @@ function checkForMatch() {
 
     setTimeout(checkWon, 500);
   } else {
+    isPlayerOne = !isPlayerOne;
     imgs[firstCard].setAttribute("src", "pics/back.png");
     imgs[secondCard].setAttribute("src", "pics/back.png");
 
@@ -163,7 +164,7 @@ function checkForMatch() {
   cardsId = [];
   clicks.count += 1;
 
-  setTimeout(alterPlayers(clicks.count), 500);
+  setTimeout(alterPlayers(isPlayerOne), 500);
 }
 
 function checkWon() {
@@ -184,6 +185,7 @@ function replay() {
   clicks.count = 0;
   clicks.p1 = 0;
   clicks.p2 = 0;
+  isPlayerOne = true;
   congrats.style.display = "none";
   location.reload();
 }
@@ -201,16 +203,16 @@ function getUrlData() {
   return playersNames;
 }
 
-function alterPlayers(count) {
-  if (count % 2 == 0) {
+function alterPlayers(player) {
+  if (player) {
     clicks.p1 += 1;
     document.querySelector(".p1").setAttribute("id", "p1");
-    document.querySelector(".clickBoard2").innerHTML = clicks.p1;
+    document.querySelector(".clickBoard1").innerHTML = clicks.p1;
     document.querySelector(".p2").setAttribute("id", "");
   } else {
     clicks.p2 += 1;
     document.querySelector(".p2").setAttribute("id", "p2");
-    document.querySelector(".clickBoard1").innerHTML = clicks.p2;
+    document.querySelector(".clickBoard2").innerHTML = clicks.p2;
     document.querySelector(".p1").setAttribute("id", "");
   }
 }
